@@ -1,10 +1,10 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.all.includes(:vehicles)
     if params[:email].present?
       @customers = @customers.where(email: params[:email])
     end
-    render json: @customers, status: :ok
+    render json: @customers, include: :vehicles, status: :ok
   end
 
   def show
