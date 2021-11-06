@@ -5,20 +5,21 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+- Ruby version
 
-* System dependencies
+  > ruby-2.6.3
 
-* Configuration
+- Database creation
 
-* Database creation
+  > rails db:migrate
 
-* Database initialization
+- Database initialization
 
-* How to run the test suite
+  > bundle exec rails db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+- How to run the test suite
 
-* Deployment instructions
+  > bundle exec rspec
 
-* ...
+- API Documentation
+  > lib/Reservations API.postman_collection.json
