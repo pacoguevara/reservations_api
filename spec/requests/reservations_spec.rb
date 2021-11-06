@@ -36,6 +36,28 @@ RSpec.describe "Reservations endpoint", type: :request do
         expect(payload["error"]).to_not be_empty
         expect(response).to have_http_status(:unprocessable_entity)
       end
+
+      it "should return a error when the timeslot is not valid" do
+        create(:reservation,
+              service: service,
+              vehicle: vehicle,
+              start_time: DateTime.new(2021, 11, 5, 12, 0, 0),
+              end_time: DateTime.new(2021, 11, 5, 12, 59, 59))
+        request_payload = {
+          reservation: {
+            vehicle_id: vehicle.id,
+            service_id: service.id,
+            start_time: DateTime.new(2021, 11, 5, 12, 0, 0),
+            end_time: DateTime.new(2021, 11, 5, 12, 0, 0)
+          }
+        }
+        post "/reservations", params: request_payload
+        payload = JSON.parse(response.body)
+        expect(payload).to_not be_empty
+        expect(payload["error"]).to_not be_empty
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+
     end
   end
 

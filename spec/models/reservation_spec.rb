@@ -26,7 +26,7 @@ RSpec.describe Reservation, type: :model do
               vehicle: vehicle,
               start_time: DateTime.new(2021, 11, 5, 14, 0, 0),
               end_time: DateTime.new(2021, 11, 5, 14, 59, 59))
-      reservation = create(:reservation,
+      reservation = build_stubbed(:reservation,
                             service: service,
                             vehicle: vehicle,
                             start_time: DateTime.new(2021, 11, 5, 13, 0, 0),
@@ -48,7 +48,7 @@ RSpec.describe Reservation, type: :model do
               vehicle: vehicle,
               start_time: DateTime.new(2021, 11, 5, 13, 0, 0),
               end_time: DateTime.new(2021, 11, 5, 14, 30, 59))
-      reservation = create(:reservation,
+      reservation = build_stubbed(:reservation,
                             service: service,
                             vehicle: vehicle,
                             start_time: DateTime.new(2021, 11, 5, 12, 30, 0),
