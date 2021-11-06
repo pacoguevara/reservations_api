@@ -1,8 +1,10 @@
 class Vehicle < ApplicationRecord
   belongs_to :customer
+  has_many :reservations
 
   validates_presence_of :make
   validates_presence_of :model
   validates_presence_of :year
-  validates_presence_of :customer_id
+
+  accepts_nested_attributes_for :customer
 end

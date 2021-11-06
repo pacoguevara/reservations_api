@@ -15,12 +15,11 @@ class ReservationsController < ApplicationController
 
   def create_params
     params.require(:reservation).permit(
-      :customer_id,
       :vehicle_id,
       :service_id,
       :start_time,
       :end_time,
-      vehicle_attributes: [:make, :model, :year, :customer_id]
+      vehicle_attributes: [:make, :model, :year, :customer_id, customer_attributes: [:name, :email]]
     )
   end
 end

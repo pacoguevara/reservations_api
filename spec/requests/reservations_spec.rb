@@ -10,7 +10,6 @@ RSpec.describe "Reservations endpoint", type: :request do
       it "should create a new reservation" do
         request_payload = {
           reservation: {
-            customer_id: customer.id,
             vehicle_id: vehicle.id,
             service_id: service.id,
             start_time: Time.now,
@@ -57,6 +56,36 @@ RSpec.describe "Reservations endpoint", type: :request do
               model: "CX5",
               year: 2015,
               customer_id: customer.id
+            }
+          }
+        }
+        post "/reservations", params: request_payload
+        payload = JSON.parse(response.body)
+        expect(payload).to_not be_empty
+        expect(payload["id"]).to_not be_nil
+        expect(response).to have_http_status(:created)
+      end
+    end
+  end
+
+  describe "POST /reservations" do
+    context "When there is a new customer with a new vehicle" do
+      let!(:service) { create(:service) }
+
+      it "should create a new reservation" do
+        request_payload = {
+          reservation: {
+            service_id: service.id,
+            start_time: Time.now,
+            end_time: Time.now+1,
+            vehicle_attributes: {
+              make: "Mazda",
+              model: "CX5",
+              year: 2015,
+              customer_attributes: {
+                name: "Francisco Guevara",
+                email: "fguevara@mail.com"
+              }
             }
           }
         }

@@ -8,7 +8,6 @@ RSpec.describe Customer, type: :model do
     end
 
     it "validate relationships" do
-      should have_many(:reservations)
       should have_many(:vehicles)
     end
   end

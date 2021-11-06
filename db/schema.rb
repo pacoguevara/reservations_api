@@ -20,14 +20,12 @@ ActiveRecord::Schema.define(version: 2021_11_05_063105) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer "customer_id", null: false
     t.integer "vehicle_id", null: false
     t.integer "service_id", null: false
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_reservations_on_customer_id"
     t.index ["service_id"], name: "index_reservations_on_service_id"
     t.index ["vehicle_id"], name: "index_reservations_on_vehicle_id"
   end
@@ -50,7 +48,6 @@ ActiveRecord::Schema.define(version: 2021_11_05_063105) do
     t.index ["customer_id"], name: "index_vehicles_on_customer_id"
   end
 
-  add_foreign_key "reservations", "customers"
   add_foreign_key "reservations", "services"
   add_foreign_key "reservations", "vehicles"
   add_foreign_key "vehicles", "customers"
