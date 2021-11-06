@@ -1,0 +1,147 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Reservations API",
+		"_postman_id": "720d4d16-26dc-5814-6aeb-2fab95db345c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Show customers",
+			"request": {
+				"url": "localhost:3000/customers",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Allows you to list all the customers and their vehicles"
+			},
+			"response": []
+		},
+		{
+			"name": "Filter customers by email",
+			"request": {
+				"url": {
+					"raw": "localhost:3000/customers?email=fguevara@mail.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customers"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "fguevara@mail.com",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Allows you to filter your customers by email and show their vehicles"
+			},
+			"response": []
+		},
+		{
+			"name": "Create new reservation",
+			"request": {
+				"url": {
+					"raw": "localhost:3000/reservations?reservation[service_id]=1&reservation[start_time]=2021-11-06 13:00:00&reservation[end_time]=2021-11-06 13:30:00&reservation[vehicle_attributes][make]=Mazda&reservation[vehicle_attributes][model]=CX-3&reservation[vehicle_attributes][year]=2015&reservation[vehicle_attributes][customer_id]=1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reservations"
+					],
+					"query": [
+						{
+							"key": "reservation[service_id]",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "reservation[start_time]",
+							"value": "2021-11-06 13:00:00",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "reservation[end_time]",
+							"value": "2021-11-06 13:30:00",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "reservation[vehicle_attributes][make]",
+							"value": "Mazda",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "reservation[vehicle_attributes][model]",
+							"value": "CX-3",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "reservation[vehicle_attributes][year]",
+							"value": "2015",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "reservation[vehicle_attributes][customer_attributes][name]",
+							"value": "Francisco Guevara",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						},
+						{
+							"key": "reservation[vehicle_attributes][customer_attributes][email]",
+							"value": "fguevara@mail.com",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						},
+						{
+							"key": "reservation[vehicle_id]",
+							"value": "1",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						},
+						{
+							"key": "reservation[vehicle_attributes][customer_id]",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Allows you to create a completly new reservation.\nYou will need to add information regarding to the vehicle and the customer"
+			},
+			"response": []
+		}
+	]
+}
