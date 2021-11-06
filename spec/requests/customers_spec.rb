@@ -31,5 +31,18 @@ RSpec.describe "Customers endpoint", type: :request do
         expect(response).to have_http_status(200)
       end
     end
+
+    describe "Search customer by email" do
+      let!(:my_customer) { create(:customer, email: "fguevara@mail.com")}
+      it "should return customer filtered by email" do
+        create_list(:customer, 3)
+        get "/customers?email=#{my_customer.email}"
+        payload = JSON.parse(response.body)
+        expect(payload).to_not be_empty
+        expect(payload.size).to eq 1
+        expect(payload.first["email"]).to eq my_customer.email
+        expect(response).to have_http_status(200)
+      end
+    end
   end
 end
